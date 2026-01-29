@@ -1,0 +1,345 @@
+@media (max-width:500px) {
+    #nav-icons {
+        gap: 10px;
+        width: 80px;
+        margin: 0 4px 0 0;
+    }
+
+    #mobileMenu {
+        margin-left: -40px;
+    }
+
+    #red-box {
+        margin-left: -18px;
+    }
+
+   
+    #HeroMain p {
+        font-size: 60px;
+    }
+
+    #HeroMain span {
+        padding: 0;
+    }
+
+    #popular-item {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    #item img {
+        height: 220px;
+    }
+
+    #offers img {
+        display: none;
+    }
+
+    #newCollection-item {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+
+    }
+
+    #newslater {
+        padding: 30px;
+    }
+
+    #newslater form {
+        width: 300px;
+    }
+
+    #footer-logo-p {
+        font-size: 32px;
+    }
+
+    #footer-ul {
+        flex-direction: column;
+    }
+
+    #footer-li {
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+
+    #footer-copyright {
+        font-size: 16px;
+    }
+
+    #shopcategory p {
+        font-size: 12px;
+    }
+
+    #ShopCategoryItem {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    #shopcategory-image {
+        margin-top: 8px;
+        width: 96%;
+    }
+
+    #shopcategory-div {
+        font-size: 12px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    #shopcategory-div img {
+        height: 8px;
+        width: 10px;
+        margin-top: 6px;
+    }
+
+    #shopcategory #more-btn {
+        font-size: 15px;
+        width: 130px;
+    }
+    #stats{
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    #stats-container{
+      width: 70%;
+      margin: auto;
+    }
+
+    #login-inner {
+        width: 300px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    #login-inner h1 {
+        font-size: 25px;
+    }
+
+    #login-inner #name {
+        height: 35px;
+        font-size: 15px;
+    }
+
+    #login-inner #email {
+        height: 35px;
+        font-size: 15px;
+    }
+
+    #login-inner #password {
+        height: 35px;
+        font-size: 15px;
+    }
+
+    #login-inner #submit {
+        height: 45px;
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    #login-inner #para1 {
+        font-size: 16px;
+    }
+
+    #login-inner #para2 {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    /* CSS for cartItem below 500px */
+
+    #cartItem-first {
+        display: none;
+    }
+
+    #first-hr {
+        display: none;
+    }
+
+    #cartItem-second {
+        padding-top: 20px;
+    }
+
+    #cartItem-second-inner {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #cartItem-second-inner-first {
+        width: 100%;
+        justify-content: space-between;
+
+    }
+
+    #cartItem-second-inner-first img {
+        height: 90px;
+        width: 90px;
+    }
+
+    #cartItem-second-inner-first p {
+        font-size: 16px;
+        font-weight: 500;
+        padding-right: 10px;
+    }
+
+    #cartItem-second-inner-second {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    #cartItem-second-inner-second button {
+        padding: 6px 13px;
+
+    }
+
+    #cartItem-third {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    #cartItem-third-first {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    #cartItem-third-first h1 {
+        font-size: 22px;
+    }
+
+    #cartItem-third-first button {
+        width: 80%;
+        height: 40px;
+        font-size: 12px;
+    }
+
+    #cartItem-third-second {
+        padding-left: 40px;
+    }
+
+    #cartItem-third-second {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    #cartItem-third-second-input {
+        width: 250px;
+        font-size: 140px;
+    }
+
+    #cartItem-third-second-input #input-1 {
+        width: 180px;
+    }
+
+    #cartItem-third-second-input #input-2 {
+        width: 200px;
+    }
+
+    /* CSS for productDetails below 500px */
+
+    #productDetails {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    #productDetails-left {
+        width: 90%;
+        flex-direction: row;
+    }
+
+    #productDetails-left-small {
+        flex-direction: column;
+        width: 30%;
+    }
+
+    #productDetails-left-big {
+        width: 65%;
+    }
+
+    #productDetails-left-small img {
+        width: 100%;
+        height: 100px;
+    }
+
+    #productDetails-left-big img {
+        width: 100%;
+        height: 99%;
+    }
+
+    #productDetails-right {
+        width: 96%;
+        margin-left: 35px;
+    }
+
+    /* CSS for productDetails below 500px */
+    #relatedProduct-item {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    #promoBannerId{
+        padding-left: 10px;
+    }
+    #PromobannerBtn{
+        padding: 10px 20px;
+    }
+    #ShopCategoryVizId{
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    #ShopCategoryVizItem{
+        margin-top: 40px;
+    }
+   
+    #ShopCategoryVizHr{
+        margin-bottom: 30px;
+    }
+    #ShopCategoryVizItem #innerBtn{
+        font-size: 14px;
+    }
+}
+
+@media (max-width:400px) {
+    #small-screen {
+        font-size: 25px;
+    }
+    #Hero-Left{
+        padding-left: 20px;
+    }
+    #heroText h2{
+        font-size: 20px;
+    }
+    #heroText p{
+        font-size: 50px;
+    }
+    #cartItem-third-second {
+        padding-left: 10px;
+    }
+    
+    #cartItem-third-second p{
+        font-size:20px;
+        padding-left: 0px;
+    }
+    #cartItem-third-second-input{
+        width: 200px;
+    }
+    #cartItem-third-second #input-1{
+        padding-left: 5px;
+        font-size:14px;
+        width: 150px;
+    }
+    #cartItem-third-second #input-2{
+        font-size:13px;
+        width: 70px;
+    }
+     #ShopCategoryViz #smallScreen{
+        font-size: 30px;
+    }
+    #ShopCategoryVizItem #innerBtn{   
+        padding: 6px 4px ;
+    }
+    #newslater #form{
+        width: 250px;
+    }
+    #newslater .input-1{
+        width: 150px;
+        
+    }
+    #newslater .input-2{
+        width: 100px;
+    }
+}
