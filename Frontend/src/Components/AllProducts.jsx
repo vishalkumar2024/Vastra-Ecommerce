@@ -1,39 +1,13 @@
-import React, { useContext, useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import all_product from '../Components/Assets/all_product'
+import React, { useContext} from "react";
 import { ShopContext } from "../Context/ShopContext";
 import Item from "./Item";
 
 
-gsap.registerPlugin(ScrollTrigger);
-
 const AllProducts = () => {
     const { allProducts } = useContext(ShopContext);
-    const sectionRef = useRef(null);
-
-    //   useEffect(() => {
-    //     const ctx = gsap.context(() => {
-    //       gsap.from(".product-card", {
-    //         opacity: 0,
-    //         y: 50,
-    //         scale: 0.95,
-    //         duration: 0.9,
-    //         stagger: 0.12,
-    //         ease: "power3.out",
-    //         scrollTrigger: {
-    //           trigger: sectionRef.current,
-    //           start: "top 80%",
-    //         },
-    //       });
-    //     }, sectionRef);
-
-    //     return () => ctx.revert();
-    //   }, []);
 
     return (
         <section
-            //   ref={sectionRef}
             className="relative min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-100 py-20 px-6"
         >
             {/* Decorative Blur */}

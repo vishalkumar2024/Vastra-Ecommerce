@@ -57,8 +57,6 @@ function Navbar() {
             stagger: 0.2,
             
         })
-
-
     })
 
 
@@ -67,7 +65,7 @@ function Navbar() {
 
             <div id="logoImage" className='w-[40%] flex justify-center items-center gap-1 ml-2'>
                 <img src={Logo} alt="Logo" className='w-20 h-18 max-lg:size-12' />
-                <p className='text-[#171717] text-[30px] max-lg:text-[26px] font-bold'><Link to="/">VASTRA</Link> </p>
+                <p className='bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-500 bg-clip-text text-transparent text-[30px] max-lg:text-[26px] font-extrabold'><Link to="/">VASHTRA</Link> </p>
             </div>
 
             <div className=' w-[60%] flex gap-40  max-xl:gap-32 max-lg:gap-20 max-md:hidden'>

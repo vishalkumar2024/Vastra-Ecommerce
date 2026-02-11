@@ -9,9 +9,9 @@ function Footer() {
     return (
         <div id="footer" className='bg-[#befcf2] flex items-center justify-center flex-col pt-3'>
 
-            <div id="footerLogo" className='flex items-center gap-5 py-5'>
+            <div id="footerLogo" className='flex items-center gap- py-5'>
                 <img src={FooterImg} alt="" id="footer-logo" className='size-28   ' />
-                <p id="footer-logo-p" className='text-[#383838] text-[46px] font-bold max-sm:text-[40px]'>VASTRA</p>
+                <p id="footer-logo-p" className='bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-500 bg-clip-text text-transparent text-[46px] font-bold max-sm:text-[40px]'>VASTRA</p>
             </div>
 
             <ul id='footer-ul' className=' footerUl flex gap-11 text-[#252525] text-[20px] max-md:gap-10  max-sm:gap-5 max-sm:text-[18px] '>
