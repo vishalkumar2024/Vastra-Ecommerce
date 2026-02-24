@@ -20,10 +20,10 @@ const reviews = [
         id: 2,
         name: "Rajesh Mehta",
         role: "Student",
-        image: "https://media-ccu2-2.cdn.whatsapp.net/v/t61.24694-24/472735847_944962443885434_514145004336530345_n.jpg?ccb=11-4&oh=01_Q5Aa3gGMiERqfWLgKasnqojZWFu7LNFRtDRDaHEaNNNCM7d5jg&oe=6986E54F&_nc_sid=5e03e0&_nc_cat=104",
+        image: "https://images.unsplash.com/photo-1530268729831-4b0b9e170218?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aW5kaWFuJTIwbWVufGVufDB8fDB8fHww",
         rating: 5,
         text: "VASTRA is my go-to for formal wear. Their shirts have a great finish and the delivery is always on time. The packaging was eco-friendly too, which is a huge plus for me!",
-    },
+    }, 
     {
         id: 3,
         name: "John Doe",
