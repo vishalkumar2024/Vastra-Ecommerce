@@ -2,12 +2,13 @@
   "name": "back-end",
   "version": "1.0.0",
   "main": "index.js",
+  "module":"import",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/index.js"
   },
-  "author": "",
+  "author": "Vishal Kumar Soni",
   "license": "ISC",
-  "description": "",
+  "description": "This is Vastra, a modern clothing E-commerce MERN stack project ",
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1",
