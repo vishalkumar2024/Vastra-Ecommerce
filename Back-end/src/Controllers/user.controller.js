@@ -1,12 +1,11 @@
-
 import { UserModel } from '../Models/user.model.js'
+import jwt from 'jsonwebtoken'
 
 
 // Function to login a user
 const login = async (req, res) => {
 
-    // 1. Get user details from frontend ( here from postman).
-    // 2. validation - check if any input field (specially email and password) is empty or in wrong format.
+    // 1. Get user details from frontend ( or from postman).
     // 3. check if email or userName is correct or not.
     // 4. if email is correct, then check the password.
     // 5. assign a jwt token, send it to the client's browser
@@ -18,19 +17,28 @@ const login = async (req, res) => {
     try {
 
         if (!email || !password) {
-            throw new ApiError(404, "All input fields are not filled")
+            return res.status(404).json({
+                success: false,
+                message: "All input fields are not filled",
+            })
         }
 
         const existedUser = await UserModel.findOne({ email: email })
 
         if (!existedUser) {
-            throw new ApiError(404, 'User does not exist with this email')
+            return res.status(404).json({
+                success: false,
+                message: "User does not exist with this email",
+            })
         }
 
         const isPasswordMatch = await existedUser.isPasswordCorrect(password)
 
         if (!isPasswordMatch) {
-            return res.error(400).send("Password is incorrect")
+            return res.status(400).json({
+                success: false,
+                message: "Password is incorrect",
+            })
         }
 
         const token = jwt.sign(
@@ -55,14 +63,17 @@ const login = async (req, res) => {
         })
 
     } catch (error) {
-        throw new ApiError(500, "Cannot login the user ", error)
+        return res.status(500).json({
+            success: false,
+            message: "user could not be logged in",
+        })
     }
 }
 
 // Function to Register a user
 const registerUser = async (req, res) => {
 
-    // 1. Get user details from frontend ( here from postman).
+    // 1. Get user details from frontend ( or from postman).
     // 3. Check if user already exist.
     // // 4. Check if user give his avatar image or not
     // 6. Creating user by userModel.create (CRUD) to store in database.

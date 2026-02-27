@@ -25,33 +25,28 @@ const userSchema = new Schema(
             trim: true, 
             index: true
         },
-        // avatar: {
-        //     type: String, // cloudinary url
-        //     required: false,
-        // },
-        // coverImage: {
-        //     type: String, // cloudinary url
-        // },
      
         password: {
             type: String,
             required: [true, 'Password is required']
         },
-        },
+    },
+
     {
         timestamps: true
     }
 )
 
-// userSchema.pre("save", async function (next) {
-//     if(!this.isModified("password")) return next();
+// Hashing password before saving it
+userSchema.pre("save", async function () { 
+    if (!this.isModified("password")) return;
 
-//     this.password = await bcrypt.hash(this.password, 10)
-//     next()
-// })
+    this.password = await bcrypt.hash(this.password, 10);
+});
 
-userSchema.methods.isPasswordCorrect = async function(password){ // Custom mathod
-    return await bcrypt.compare(password, this.password)
+// Custom method to compare password 
+userSchema.methods.isPasswordCorrect = function(password){ 
+    return bcrypt.compare(password, this.password)
 }
 
 
