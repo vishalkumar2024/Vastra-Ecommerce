@@ -1,12 +1,11 @@
-// require('dotenv').config({ path:'./env' })
 import dotenv from 'dotenv'
-import express from "express";
+import express from 'express'
 import connection from "./Config/db.config.js";
+import {upload} from './Middleware/multer.js'
 import { app } from "./App.js"
 dotenv.config({
     path:'./env'
 })
-
 
 
 connection()
@@ -24,4 +23,10 @@ app.get('/', function (req, res) {
     res.send('index');
 })
 
-app.listen(3000);
+app.use('/images',express.static('upload/images'))
+app.post('/upload',upload.single('product'),(req, res)=>{
+    res.json({
+        success:1,
+        image_url:`http://localhost:${port}/images/${File.filename}`
+    })
+})
