@@ -114,6 +114,7 @@ const registerUser = async (req, res) => {
         }
 
         return res.status(200).json(createdUser) //.8
+
     } catch (error) {
         return res.status(500).json({
             error: error,
@@ -122,5 +123,7 @@ const registerUser = async (req, res) => {
         })
     }
 }
+
+
 
 export { login, registerUser }

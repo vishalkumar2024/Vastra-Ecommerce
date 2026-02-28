@@ -1,4 +1,3 @@
-
 import express from "express"
 const app = express();
 import cookieParser from "cookie-parser"
@@ -17,7 +16,9 @@ app.use(express.static("public"))
 
 
 import user from "./Routes/user.routes.js"
+import product from "./Routes/product.routes.js"
 
 app.use("/api/user", user)
+app.use("/api/product", product)
 
 export { app }

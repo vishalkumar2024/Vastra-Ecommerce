@@ -1,21 +1,21 @@
-import mongoose from 'mongoose'
+import mongoose, {Schema} from 'mongoose'
 
 const fileSchema = new Schema(
     {
         id: {
-            type: string,
+            type: String,
             required: true,
         },
         name:{
-            type:strig,
+            type:String,
             required:true,
         },
         image:{
-            type:string,
+            type:String,
             required:true
         },
         category:{
-            type:string,
+            type:String,
             required:true
         },
         old_price:{
@@ -31,7 +31,7 @@ const fileSchema = new Schema(
             default:Date.now(),
         },
         available:{
-            type:bool,
+            type:Boolean,
             default:true
         }
         
@@ -41,4 +41,4 @@ const fileSchema = new Schema(
         timestamps: true
     }
 )
-export const UserModel = mongoose.model("User", userSchema)
+export const FileModel = mongoose.model("File", fileSchema)
