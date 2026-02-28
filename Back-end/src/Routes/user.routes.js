@@ -4,8 +4,6 @@ import { login, registerUser } from '../controllers/user.controller.js';
 // import { upload } from "../middlewares/multer.js"
 // import { isAuth } from '../middlewares/isAuth.middleware.js';
 
-
-
 // router.route("/register").post(
 //     upload.fields([
 //         {

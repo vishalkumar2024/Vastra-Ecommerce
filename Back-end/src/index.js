@@ -23,10 +23,18 @@ app.get('/', function (req, res) {
     res.send('index');
 })
 
+
 app.use('/images',express.static('upload/images'))
-app.post('/upload',upload.single('product'),(req, res)=>{
+app.post('/upload', upload.single('product'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({
+            success: false,
+            message: "No file uploaded"
+        });
+    }
+
     res.json({
-        success:1,
-        image_url:`http://localhost:${port}/images/${File.filename}`
-    })
-})
+        success: true,
+        image_url: `http://localhost:${process.env.PORT}/images/${req.file.filename}`
+    });
+});
