@@ -1,8 +1,14 @@
-import React from 'react'
-import { IoCloudUploadOutline } from "react-icons/io5";
+import React, { useState } from 'react'
+import upload from '../components/Assets/upload-image.png'
 
 
 function AddProducts() {
+
+    const [image, setImage] = useState(false)
+    const handleUpload = (e) =>{
+        setImage(e.target.files[0])
+    }
+
     return (
         <div className='m-6 py-10 px-10 bg-white w-full'>
 
@@ -46,11 +52,20 @@ function AddProducts() {
                 </select>
             </div>
 
-            <div className='py-5 px-6 w-[10%] rounded-sm border-2 border-gray-400 cursor-pointer bg-gray-200 mb-5'>
+            <div className='w-[10%] flex items-baseline justify-center rounded-sm border-2 border-gray-400 cursor-pointer bg-gray-200 mb-5'>
                 <label htmlFor="file-input">
-                    <IoCloudUploadOutline className='size-10 cursor-pointer text-gray-500' />
+                    <img 
+                    src={image?URL.createObjectURL(image):upload}
+                    className='size-20 cursor-pointer text-gray-500' />
                 </label>
-                <input type="file" name='image' id='file-input' hidden />
+
+                <input
+                    onChange={handleUpload}
+                    type="file"
+                    name='image'
+                    id='file-input'
+                    hidden
+                />
             </div>
 
             <button className='text-[17px] uppercase text-white cursor-pointer font-semibold bg-blue-400 rounded-sm  px-10 py-2'>Add</button>
