@@ -5,7 +5,7 @@ import { SiBookstack } from "react-icons/si";
 
 function Sidebar() {
     return (
-        <div className='flex flex-col gap-5 pt-5 w-full h-[100vh] max-w-[220px] bg-white max-md:flex-row max-md:w-full max-md:h-full max-md:py-6 max-md:px-0 max-md:max-w-none max-md:justify-center'>
+        <div className='flex  flex-col gap-5 pt-5 w-full h-[100vh] max-w-[220px] bg-white max-md:flex-row max-md:w-full max-md:h-full max-md:py-6 max-md:px-0 max-md:max-w-none max-md:justify-center'>
 
             <Link 
                 to='/addproduct'

@@ -41,7 +41,6 @@ function AddProducts() {
                 console.log(product);
             }
 
-
             const { data } = await axios.post(
                 "http://localhost:4000/api/product/addproducts",
                 product,
@@ -63,7 +62,7 @@ function AddProducts() {
     };
 
     return (
-        <div className="m-6 py-10 px-10 bg-white w-full">
+        <div className="py-2 px-8 m-7 bg-white w-full">
             <div className="w-full mb-8 ">
                 <p className="text-[18px] mb-3 font-semibold text-gray-500">
                     Product Title

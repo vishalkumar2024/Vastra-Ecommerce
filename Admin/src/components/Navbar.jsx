@@ -18,7 +18,7 @@ function Navabar() {
 
             {/* Admin profile */}
             <div className='flex items-center justify-center gap-3  '>
-                <img className='h-14 w-14 rounded-full max-lg:h-10 max-lg:w-10' src="https://images.unsplash.com/photo-1530268729831-4b0b9e170218?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aW5kaWFuJTIwbWVufGVufDB8fDB8fHww" alt="" />
+                <img className='h-12 w-12 rounded-full max-lg:h-10 max-lg:w-10' src="https://images.unsplash.com/photo-1530268729831-4b0b9e170218?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aW5kaWFuJTIwbWVufGVufDB8fDB8fHww" alt="" />
                 <img src={arrow} className='rotate-90 cursor-pointer' alt="dropdown-arrow" />
             </div>
         </div>
