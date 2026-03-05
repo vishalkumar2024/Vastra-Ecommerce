@@ -27,7 +27,7 @@ function ListProducts() {
 
   return (
     <div className='flex flex-col item-center w-full h-[750px] py-2 px-8 m-4 bg-white rounded-sm'>
-      <h1 className='text-center uppercase py-8  text-4xl font-semibold'>All Products</h1>
+      <h1 className='text-4xl md:text-4xl font-extrabold bg-gradient-to-r from-cyan-600 via-cyan-400 to-cyan bg-clip-text text-transparent  text-center uppercase py-8 '>All Products</h1>
       <div className="grid grid-cols-[1fr_3fr_1fr_1fr_1fr_1fr] gap-[10px] w-full py-[20px] text-[#272727] text-[15px] font-semibold">
         <p>Products</p>
         <p>Title</p>

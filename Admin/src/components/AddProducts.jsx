@@ -5,7 +5,7 @@ import axios from "axios";
 function AddProducts() {
     const [image, setImage] = useState(false);
     const [productDetails, setproductDetails] = useState({
-        id:"1221",
+        id: "1221",
         name: "",
         image: "",
         category: "men",
@@ -62,7 +62,7 @@ function AddProducts() {
     };
 
     return (
-        <div className="py-2 px-8 m-7 bg-white w-full">
+        <div className="py-8 px-10 m-7 bg-white w-full">
             <div className="w-full mb-8 ">
                 <p className="text-[18px] mb-3 font-semibold text-gray-500">
                     Product Title
@@ -73,7 +73,7 @@ function AddProducts() {
                     value={productDetails.name}
                     onChange={onChangeHandler}
                     placeholder="Type title"
-                    className="border-2 outline-none border-gray-300 w-full p-2 rounded-md"
+                    className="text-gray-500 border-2  border-gray-300 rounded-md  focus:outline-none focus:ring-1 focus:ring-gray-200  focus:border-gray-400 transition duration-200 w-full p-2 "
                 />
             </div>
 
@@ -86,7 +86,7 @@ function AddProducts() {
                         value={productDetails.old_price}
                         onChange={onChangeHandler}
                         placeholder="Type Price"
-                        className="border-2 outline-none border-gray-300 w-full p-2 rounded-md"
+                        className="text-gray-500 border-2  border-gray-300  focus:outline-none focus:ring-1 focus:ring-gray-200  focus:border-gray-400 transition duration-200 w-full p-2 rounded-md"
                     />
                 </div>
                 <div className="w-[50%] ">
@@ -99,7 +99,7 @@ function AddProducts() {
                         value={productDetails.new_price}
                         onChange={onChangeHandler}
                         placeholder="Type Price"
-                        className="border-2 outline-none border-gray-300 w-full p-2 rounded-md"
+                        className="text-gray-500 border-2  border-gray-300  focus:outline-none focus:ring-1 focus:ring-gray-200  focus:border-gray-400 transition duration-200 w-full p-2 rounded-md"
                     />
                 </div>
             </div>
@@ -111,7 +111,7 @@ function AddProducts() {
                 <select
                     value={productDetails.category}
                     onChange={onChangeHandler}
-                    className="border-2 border-gray-300 w-[80%] text-gray-500 p-2 rounded-md"
+                    className="text-gray-500 border-2  border-gray-300  focus:outline-none focus:ring-1 focus:ring-gray-200  focus:border-gray-400 transition duration-200  w-[80%]  p-2 rounded-md"
                     name="category"
                     id=""
                 >

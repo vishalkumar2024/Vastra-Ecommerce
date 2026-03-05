@@ -1,10 +1,15 @@
 import dotenv from 'dotenv'
-import express from 'express'
 import connection from "./Config/db.config.js";
-import {upload} from './Middleware/multer.js'
 import { app } from "./App.js"
+import {v2 as cloudinary} from 'cloudinary'
+
 dotenv.config({
     path:'./env'
+})
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
 })
 
 
@@ -17,24 +22,3 @@ connection()
     .catch((error) => {
         console.log("Could not connect to mongoDB",error)
     })
-
-
-app.get('/', function (req, res) {
-    res.send('index');
-})
-
-
-app.use('/images',express.static('upload/images'))
-app.post('/upload', upload.single('product'), (req, res) => {
-    if (!req.file) {
-        return res.status(400).json({
-            success: false,
-            message: "No file uploaded"
-        });
-    }
-
-    res.json({
-        success: true,
-        image_url: `http://localhost:${process.env.PORT}/images/${req.file.filename}`
-    });
-});

@@ -1,18 +1,13 @@
 import multer from "multer"
-import path from 'path'
 
-
+// Multer middleware
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './src/upload/images');
+    destination: function (req, file, cb) { 
+        cb(null, './src/upload')
     },
     filename: function (req, file, cb) {
-        const ext = path.extname(file.originalname);
-        const name = file.originalname.split('.')[0];
-
-        cb(null, `${name}_${Date.now()}${ext}`);
+        cb(null,Date.now() + '-' + file.originalname) 
     }
-});
-
+})
 
 export const upload = multer({ storage: storage })

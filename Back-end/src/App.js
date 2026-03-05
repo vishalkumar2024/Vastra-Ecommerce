@@ -17,8 +17,11 @@ app.use(express.static("public"))
 
 import user from "./Routes/user.routes.js"
 import product from "./Routes/product.routes.js"
+import file from "./Routes/file.routes.js"
 
 app.use("/api/user", user)
 app.use("/api/product", product)
+app.use("/api/file", file)
+
 
 export { app }
