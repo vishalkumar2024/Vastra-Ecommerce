@@ -72,7 +72,7 @@ function AddProducts() {
 
                 alert("Product Added Successfully");
 
-                // Reset form
+                // Reset form - all fields will be empty
                 setproductDetails(initialProductState);
                 setImage(false);
 
