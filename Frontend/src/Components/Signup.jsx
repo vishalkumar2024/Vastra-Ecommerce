@@ -1,7 +1,51 @@
-import react from 'react'
+import react, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+
 
 function Signup() {
+
+    const initialCredential = {
+        email: "",
+        name:"",
+        password: ""
+    }
+
+    const [credential, setCredential] = useState(initialCredential)
+
+    const handleChange = (e) => {
+        setCredential({ ...credential, [e.target.name]: e.target.value })
+    }
+
+    const email = credential.email
+    const name = credential.name
+    const password = credential.password
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post(
+                "http://localhost:4000/api/user/signup", // url
+                { email, name, password },  // data
+                { withCredentials: true }, // configuration
+            );
+
+            const message = response.data.message;
+
+            if (response.data.success) {
+                alert(' ✅ ' + message);
+                console.log("Successfully");
+            }
+
+        } catch (error) {
+
+            const message = error.response?.data?.message || "Something went wrong";
+            alert(message);
+            console.log(error);
+        }
+    };
+
     return (
         <div>
             <div id="login" className='w-[100%]   border-b bg-linear-to-b from-[#94f5e5] to-[#e1ffea22]  pt-[120px] pb-32'>
@@ -12,6 +56,8 @@ function Signup() {
                             type="text"
                             name="name"
                             placeholder='Your name'
+                            value={name}
+                            onChange={handleChange}
                             id="name"
                             className='w-[100%] rounded-[4px] h-[52px] pl-5 outline-none border border-[#c9c9c9] text-[#5c5c5c] text-[18px]'
                             required
@@ -21,6 +67,8 @@ function Signup() {
                             type="email"
                             name='email'
                             placeholder='Your Email'
+                            value={email}
+                            onChange={handleChange}
                             id="email"
                             className='w-[100%] rounded-[4px] h-[52px] pl-5 outline-none border border-[#c9c9c9] text-[#5c5c5c] text-[18px]'
                             required
@@ -30,6 +78,8 @@ function Signup() {
                             type="password"
                             name='password'
                             placeholder='Your password'
+                            value={password}
+                            onChange={handleChange}
                             id="password"
                             className='w-[100%] rounded-[4px] h-[52px] pl-5 outline-none border border-[#c9c9c9] text-[#5c5c5c] text-[18px]'
                             required
@@ -38,8 +88,9 @@ function Signup() {
                             type='submit'
                             value="Signup"
                             id="submit"
+                            onClick={handleSubmit}
                             className='w-[100%] rounded-[8px] h-[60px] text-white bg-[#ff4141] mt-1 border-none text-[24px] font-semibold cursor-pointer'
-                            
+
                         />
                     </form>
 

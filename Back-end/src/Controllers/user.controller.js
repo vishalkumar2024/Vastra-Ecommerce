@@ -53,7 +53,7 @@ const login = async (req, res) => {
             sameSite: "lax",
             maxAge: 24 * 60 * 60 * 1000 // 1 day
         })
-       
+
         const userResponse = { ...existedUser.toObject() }
         delete userResponse.password
 
@@ -141,6 +141,21 @@ const registerUser = async (req, res) => {
     }
 }
 
+// Function to logout a user
+const logout = async (req, res) => {
+    try {
+        res.clearCookie('token')
+        return res.status(200).json({
+            success: true,
+            message: "Successfully logout",
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "user could not be logged out",
+        })
+    }
+}
 
 
-export { login, registerUser }
+export { login, registerUser, logout }

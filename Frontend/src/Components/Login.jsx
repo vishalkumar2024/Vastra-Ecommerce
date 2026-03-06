@@ -34,6 +34,8 @@ function login() {
             if (response.data.success) {
                 alert(' ✅ ' + message);
                 console.log("Successfully");
+
+                window.location.href = "/";
             }
 
         } catch (error) {

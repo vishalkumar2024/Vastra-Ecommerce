@@ -42,22 +42,46 @@ function Navbar() {
 
         })
         gsap.from("#loginIcon", {
-           scale: 0,
+            scale: 0,
             duration: 0.6,
             delay: 0.8,
             ease: "back.out(1.7)",
             stagger: 0.2,
 
         })
-        gsap.from("#cart", {         
+        gsap.from("#cart", {
             scale: 0,
             duration: 0.6,
             delay: 0.8,
             ease: "back.out(1.7)",
             stagger: 0.2,
-            
+
         })
     })
+
+    // function to read cookie
+    const getCookie = (name) => {
+        const cookies = document.cookie.split(";");
+
+        for (let cookie of cookies) {
+            const [key, value] = cookie.trim().split("=");
+
+            if (key === name) {
+                return value;
+            }
+        }
+
+        return null;
+    };
+
+    const token = getCookie("token");
+
+    // logout function
+    const handleLogout = () => {
+        document.cookie =
+            "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        window.location.reload();
+    };
 
 
     return (
@@ -76,8 +100,14 @@ function Navbar() {
                     <li id="id" className='cursor-pointer active:text-red-300   max-lg:text-[16px] hover:translate-y-[10px]'><Link to="/contact">Contact</Link></li>
                 </ul>
                 <div className='flex items-center gap-10 max-lg:gap-6'>
-                    <Link id="loginIcon" to="/login"> <button onClick={window.scrollTo(0, 0)} className=' px-4 py-2 max-lg:py-1.5 max-lg:px-3rounded cursor-pointer  active:bg-green-700'>Login</button>
-                    </Link>
+                    {
+                        (localStorage.getItem("ldcsv")
+                            ? <Link id="loginIcon" to="/login"> <button onClick={localStorage.removeItem('ldcsv')} className=' px-4 py-2 max-lg:py-1.5 max-lg:px-3rounded cursor-pointer  active:bg-green-700'>Logout</button>
+                            </Link>
+                            : <Link id="loginIcon" to="/login"> <button onClick={window.scrollTo(0, 0)} className=' px-4 py-2 max-lg:py-1.5 max-lg:px-3rounded cursor-pointer  active:bg-green-700'>Login</button>
+                            </Link>
+                        )
+                    }
                     <Link id="cart" to="/cart">  <img src={CartIcon} alt="Cart Image" className='size-8 max-lg:size-8' /></Link>
                     <div id="cart" className='w-4 h-4 flex items-center justify-center -mt-6 -ml-12 rounded-full text-[11px] bg-red-500 text-white
                         max-lg:-mt-6 max-lg:w-[16px] max-lg:h-[16px] max-lg:text-[11px] max-lg:-ml-8 '>{getTotalItem()}</div>
