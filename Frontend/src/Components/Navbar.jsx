@@ -79,7 +79,7 @@ function Navbar() {
                     <Link id="loginIcon" to="/login"> <button onClick={window.scrollTo(0, 0)} className=' px-4 py-2 max-lg:py-1.5 max-lg:px-3rounded cursor-pointer  active:bg-green-700'>Login</button>
                     </Link>
                     <Link id="cart" to="/cart">  <img src={CartIcon} alt="Cart Image" className='size-8 max-lg:size-8' /></Link>
-                    <div id="cart" className='w-4 h-4 flex items-center justify-center -mt-6 -ml-12 rounded-full text-[14px] bg-red-500 text-white
+                    <div id="cart" className='w-4 h-4 flex items-center justify-center -mt-6 -ml-12 rounded-full text-[11px] bg-red-500 text-white
                         max-lg:-mt-6 max-lg:w-[16px] max-lg:h-[16px] max-lg:text-[11px] max-lg:-ml-8 '>{getTotalItem()}</div>
                 </div>
             </div>

@@ -50,9 +50,10 @@ const login = async (req, res) => {
         res.cookie('token', token, {
             httpOnly: true,
             secure: process.env.SECRET === 'production',
+            sameSite: "lax",
             maxAge: 24 * 60 * 60 * 1000 // 1 day
         })
-
+       
         const userResponse = { ...existedUser.toObject() }
         delete userResponse.password
 
@@ -85,24 +86,24 @@ const registerUser = async (req, res) => {
     const { email, name, password } = req.body; //1
 
     try {
-        const existedUser = await UserModel.findOne({email}) //2
+        const existedUser = await UserModel.findOne({ email }) //2
         if (existedUser) {
-             return res.status(400).json({
+            return res.status(400).json({
                 success: false,
                 message: "User already exist with this email ",
             })
         }
 
         let cart = {}; //3
-        for(let i=0;i<200;i++){
-            cart[i]= 0;
+        for (let i = 0; i < 200; i++) {
+            cart[i] = 0;
         }
 
         const user = await UserModel.create({ //4
             email,
             password,
             name,
-            cartData:cart,
+            cartData: cart,
         })
         await user.save();
 
