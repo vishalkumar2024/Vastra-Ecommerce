@@ -19,7 +19,7 @@ function ListProducts() {
 
   // Remove Product
   const removeProduct = async (id) => {
-    const response = await axios.post('http://localhost:4000/api/product/removeproduct', { id: id })
+     await axios.post('http://localhost:4000/api/product/removeproduct', { id: id })
 
     fetchAllProducts()
   }
@@ -47,12 +47,12 @@ function ListProducts() {
             }
             return (
               <div key={index} className="grid bg-gray-200 gap-y-4 my-4 grid-cols-[1fr_3fr_1fr_1fr_1fr_1fr] gap-[10px] w-full  text-[#454545] text-[15px] font-semibold">
-                <img src={product.image} alt="" className='h-[80px]' />
+                <img src={product.image} alt="product Image" className='h-[58px] m-1.5' />
                 <p className='py-6'>{product.name}</p>
                 <p className='py-6'>${product.old_price}</p>
                 <p className='py-6'>${product.new_price}</p>
                 <p className='py-6'>{product.category}</p>
-                <p className='h-6 py-7 font-bold cursor-pointer text-[18px]'><RxCross2 onClick={() => removeProduct(product.id)} /></p>
+                <p className='h-6 py-7 ml-2 font-bold cursor-pointer text-[18px]'><RxCross2 onClick={() => removeProduct(product.id)} /></p>
               </div>
             )
           })

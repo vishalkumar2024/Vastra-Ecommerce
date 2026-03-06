@@ -18,7 +18,9 @@ const uploadOnCloudinary = async (req, res) => {
             resource_type: 'image'
         })
 
-        // fs.unlinkSync(localPath)
+        console.log("Successfully uploaded on cloudinary")
+
+        fs.unlinkSync(localPath)
 
         if (!response) {
             return res.status(400).json({
@@ -26,12 +28,13 @@ const uploadOnCloudinary = async (req, res) => {
                 message:"Error in response"
             })
         }
-
+        
         return res.status(200).json({
             success:true,
             message:"File upload successfull",
             image_url:response.secure_url
         })
+
 
     } catch (error) {
 

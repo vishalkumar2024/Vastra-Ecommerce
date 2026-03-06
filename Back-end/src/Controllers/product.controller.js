@@ -3,8 +3,17 @@ import { FileModel } from '../Models/file.model.js'
 // Function to add products to the database
 const addProducts = async (req, res) => {
     try {
+        const Product = await FileModel.find({})
+        let id;
+        if(Product.length>0){
+           let lastProduct_array = Product.slice(-1)
+           let lastProduct =  lastProduct_array[0];
+           id = lastProduct.id + 1;
+        }else{
+            id = 1;
+        }
 
-        const { id, name, image, category, old_price, new_price } = req.body;
+        const {  name, image, category, old_price, new_price } = req.body;
 
         const product = await FileModel.create({
             id,

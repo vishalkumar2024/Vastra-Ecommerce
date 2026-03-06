@@ -3,7 +3,7 @@ import mongoose, {Schema} from 'mongoose'
 const fileSchema = new Schema(
     {
         id: {
-            type: String,
+            type: Number,
             required: true,
         },
         name:{
