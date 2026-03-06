@@ -74,36 +74,52 @@ const login = async (req, res) => {
 const registerUser = async (req, res) => {
 
     // 1. Get user details from frontend ( or from postman).
-    // 3. Check if user already exist.
-    // // 4. Check if user give his avatar image or not
-    // 6. Creating user by userModel.create (CRUD) to store in database.
-    // 7. Remove password and refresh token field from response. 
-    // 8. Check for user creation- if true then return res.
+    // 2. Check if user already exist.
+    // 3. Created size 200 cartData
+    // 4. Creating user by userModel.create (CRUD) to store in database.
+    // 5. Generate the cookie
+    // 6. Remove password and refresh token field from response. 
+    // 7. Check for user creation- if true then return res.
 
 
-    const { email, fullName, userName, password } = req.body;
+    const { email, name, password } = req.body; //1
 
     try {
-        const existedUser = await UserModel.findOne({ 
-            $or: [{ email }, { userName }]
-        })
+        const existedUser = await UserModel.findOne({email}) //2
         if (existedUser) {
              return res.status(400).json({
                 success: false,
-                message: "User already exist with this email or userName ",
+                message: "User already exist with this email ",
             })
         }
 
-        const user = await UserModel.create({ 
+        let cart = {}; //3
+        for(let i=0;i<200;i++){
+            cart[i]= 0;
+        }
+
+        const user = await UserModel.create({ //4
             email,
             password,
-            fullName,
-            userName: userName.toLowerCase(),
+            name,
+            cartData:cart,
+        })
+        await user.save();
 
+        const token = jwt.sign( //5
+            { userId: user.id, email: user.email },
+            process.env.SECRET,
+            { expiresIn: "1d" }
+        )
+
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.SECRET === 'production',
+            maxAge: 24 * 60 * 60 * 1000 // 1 day
         })
 
-        const createdUser = await UserModel.findOne(user._id).select( 
-            "-password -refreshToken"
+        const createdUser = await UserModel.findOne(user._id).select( //6
+            "-password "
         )
 
         if (!createdUser) {
@@ -113,7 +129,7 @@ const registerUser = async (req, res) => {
             })
         }
 
-        return res.status(200).json(createdUser) //.8
+        return res.status(200).json(createdUser) //7
 
     } catch (error) {
         return res.status(500).json({

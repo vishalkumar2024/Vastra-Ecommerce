@@ -4,7 +4,7 @@ import bcrypt from "bcrypt"
 
 const userSchema = new Schema(
     {
-        userName: {
+        name: {
             type: String,
             required: true,
             unique: true,
@@ -19,17 +19,18 @@ const userSchema = new Schema(
             lowecase: true,
             trim: true, 
         },
-        fullName: {
-            type: String,
-            required: true,
-            trim: true, 
-            index: true
-        },
      
         password: {
             type: String,
             required: [true, 'Password is required']
         },
+        cartData:{
+            type:Object
+        },
+        date:{
+            type:Date,
+            default:Date.now
+        }
     },
 
     {
