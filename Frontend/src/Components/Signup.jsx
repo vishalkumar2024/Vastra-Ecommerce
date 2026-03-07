@@ -7,7 +7,7 @@ function Signup() {
 
     const initialCredential = {
         email: "",
-        name:"",
+        userName: "",
         password: ""
     }
 
@@ -17,29 +17,27 @@ function Signup() {
         setCredential({ ...credential, [e.target.name]: e.target.value })
     }
 
-    const email = credential.email
-    const name = credential.name
-    const password = credential.password
+   const {email, userName, password} = credential
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
+            
             const response = await axios.post(
                 "http://localhost:4000/api/user/signup", // url
-                { email, name, password },  // data
+                { userName,email , password },  // data
                 { withCredentials: true }, // configuration
             );
 
-            const message = response.data.message;
-
             if (response.data.success) {
-                alert(' ✅ ' + message);
+                alert(' ✅ ' + "You are successfully registered");
                 console.log("Successfully");
+
+                window.location.href = "/";
             }
 
         } catch (error) {
-
             const message = error.response?.data?.message || "Something went wrong";
             alert(message);
             console.log(error);
@@ -51,12 +49,12 @@ function Signup() {
             <div id="login" className='w-[100%]   border-b bg-linear-to-b from-[#94f5e5] to-[#e1ffea22]  pt-[120px] pb-32'>
                 <div id="login-inner" className='w-[550px] h-fit rounded  bg-white/70 m-auto py-5 px-15 max-sm:w-[450px]'>
                     <h1 className='my-4 mx-0 text-3xl font-semibold capitalize'>Sign up</h1>
-                    <form action="/signup" method="post" className='flex flex-col gap-5  '>
+                    <form onSubmit={handleSubmit} className='flex flex-col gap-5  '>
                         <input
                             type="text"
-                            name="name"
+                            name="userName"
                             placeholder='Your name'
-                            value={name}
+                            value={userName}
                             onChange={handleChange}
                             id="name"
                             className='w-[100%] rounded-[4px] h-[52px] pl-5 outline-none border border-[#c9c9c9] text-[#5c5c5c] text-[18px]'
@@ -85,10 +83,9 @@ function Signup() {
                             required
                         />
                         <input
-                            type='submit'
+                            type="submit"
                             value="Signup"
                             id="submit"
-                            onClick={handleSubmit}
                             className='w-[100%] rounded-[8px] h-[60px] text-white bg-[#ff4141] mt-1 border-none text-[24px] font-semibold cursor-pointer'
 
                         />

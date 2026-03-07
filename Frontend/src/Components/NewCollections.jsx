@@ -50,7 +50,7 @@ function NewCollections() {
             </div>
             <div id="newCollection-item" className='newCollectionItem grid grid-cols-4 mt-7 gap-5 max-lg:gap-1 max-md:grid-cols-2 max-sm:gap-3'>
                 {newCollections.map((item, i) => {
-                    return <div className=''  ref={(el) => (cardsRef.current[i] = el)}>
+                    return <div className='' key={item.id}  ref={(el) => (cardsRef.current[i] = el)}>
                         <Item key={i} id={item.id} name={item.name} image={item.image} new_price={item.new_price} old_price={item.old_price} />
                     </div>
                 })}

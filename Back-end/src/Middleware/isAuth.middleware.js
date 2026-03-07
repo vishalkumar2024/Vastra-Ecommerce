@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import  {UserModel}  from "../Models/user.model.js";
+import { UserModel } from "../Models/user.model.js";
 
 
 const isAuth = async (req, res, next) => {
@@ -14,7 +14,10 @@ const isAuth = async (req, res, next) => {
   const user = await UserModel.findById(decodedToken?.userId).select("-password")
 
   if (!user) {
-    throw new ApiError(401, "Invalid Access Token")
+    return res.status(401).json({
+      successand: false,
+      message: "Invalid Access Token",
+    })
   }
 
   req.user = user

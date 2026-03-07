@@ -48,7 +48,7 @@ const login = async (req, res) => {
         )
 
         res.cookie('token', token, {
-            httpOnly: true,
+            httpOnly: false,
             secure: process.env.SECRET === 'production',
             sameSite: "lax",
             maxAge: 24 * 60 * 60 * 1000 // 1 day
@@ -83,54 +83,58 @@ const registerUser = async (req, res) => {
     // 7. Check for user creation- if true then return res.
 
 
-    const { email, name, password } = req.body; //1
+    const { email, userName, password } = req.body; //1
 
     try {
-        const existedUser = await UserModel.findOne({ email }) //2
-        if (existedUser) {
-            return res.status(400).json({
-                success: false,
-                message: "User already exist with this email ",
-            })
-        }
-
-        let cart = {}; //3
-        for (let i = 0; i < 200; i++) {
-            cart[i] = 0;
-        }
-
-        const user = await UserModel.create({ //4
-            email,
-            password,
-            name,
-            cartData: cart,
+    const existedUser = await UserModel.findOne({ email }) //2
+    if (existedUser) {
+        return res.status(400).json({
+            success: false,
+            message: "User already exist with this email ",
         })
-        await user.save();
+    }
 
-        const token = jwt.sign( //5
-            { userId: user.id, email: user.email },
-            process.env.SECRET,
-            { expiresIn: "1d" }
-        )
+    let cart = {}; //3
+    for (let i = 0; i < 200; i++) {
+        cart[i] = 0;
+    }
 
-        res.cookie('token', token, {
-            httpOnly: true,
-            secure: process.env.SECRET === 'production',
-            maxAge: 24 * 60 * 60 * 1000 // 1 day
+    const user = await UserModel.create({ //4
+        email,
+        password,
+        userName,
+        cartData: cart,
+    })
+
+    const token = jwt.sign( //5
+        { userId: user.id, email: user.email },
+        process.env.SECRET,
+        { expiresIn: "1d" }
+    )
+
+    res.cookie('token', token, {
+        httpOnly: false,
+        secure: process.env.SECRET === 'production',
+        sameSite: "lax",
+        maxAge: 24 * 60 * 60 * 1000 // 1 day
+    })
+
+    const createdUser = await UserModel.findById(user.id).select( //6
+        "-password "
+    )
+
+    if (!createdUser) {
+        return res.status(500).json({
+            success: false,
+            message: "user could not be created",
         })
+    }
 
-        const createdUser = await UserModel.findOne(user._id).select( //6
-            "-password "
-        )
-
-        if (!createdUser) {
-            return res.status(500).json({
-                success: false,
-                message: "user could not be created",
-            })
-        }
-
-        return res.status(200).json(createdUser) //7
+    return res.status(200).json({
+        success: true,
+        message: "User created successfully",
+        user: createdUser
+    })
 
     } catch (error) {
         return res.status(500).json({
