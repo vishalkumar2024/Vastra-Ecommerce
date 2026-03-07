@@ -162,7 +162,7 @@ function AddProducts() {
 
                     <img
                         src={image ? URL.createObjectURL(image) : upload}
-                        className="size-20 cursor-pointer"
+                        className="h-20 w-24 cursor-pointer"
                         alt="upload"
                     />
 

@@ -53,10 +53,10 @@ const TestimonialSection = () => {
             {/* Custom Navigation Buttons */}
             <div className="flex items-center justify-end mb-8">
                 <div className="flex gap-2 mt-4">
-                    <button className="prev-btn p-2 cursor-pointer bg-gray-100 rounded-lg border border-gray-200 hover:bg-gray-300 transition-colors">
+                    <button className="prev-btn p-2 cursor-pointer bg-emerald-100 rounded-lg border border-emerald-300 hover:bg-emerald-200 transition-colors">
                         <ChevronLeft size={24} />
                     </button>
-                    <button className="next-btn p-2 cursor-pointer bg-gray-100 rounded-lg border border-gray-200 hover:bg-gray-300 transition-colors">
+                    <button className="next-btn p-2 cursor-pointer bg-emerald-100 rounded-lg border border-emerald-300 hover:bg-emerald-200 transition-colors">
                         <ChevronRight size={24} />
                     </button>
                 </div>
@@ -80,7 +80,7 @@ const TestimonialSection = () => {
 
                 {reviews.map((review) => (
                     <SwiperSlide key={review.id}>
-                        <div className="bg-gray-100 p-8 h-[300px] rounded-3xl border border-gray-100   flex flex-col">
+                        <div className="bg-[rgba(210,247,249,0.6)] p-8 h-[300px] rounded-3xl border border-gray-100   flex flex-col">
                             <div className="flex items-center gap-4 mb-4">
                                 <div className="relative">
                                     <img
