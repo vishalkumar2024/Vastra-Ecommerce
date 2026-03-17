@@ -56,15 +56,17 @@ function Navbar() {
         });
     });
 
-    const handleLogout = async() =>{
-        await axios.post("http://localhost:4000/api/user/logout")
-        .then((res)=>{
-            Cookies.remove("token");
-            window.location.reload();
+    const handleLogout = async () => {
+        await axios.post("http://localhost:4000/api/user/logout", {
+            withCredentials: true
         })
-        .catch((err)=>{
-            console.log(err);
-        })
+            .then((res) => {
+                Cookies.remove("token");
+                window.location.reload();
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);

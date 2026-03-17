@@ -48,8 +48,8 @@ const login = async (req, res) => {
         )
 
         res.cookie('token', token, {
-            httpOnly: false,
-            secure: process.env.SECRET === 'production',
+            httpOnly: true,
+            secure: false,
             sameSite: "lax",
             maxAge: 24 * 60 * 60 * 1000 // 1 day
         })

@@ -70,7 +70,7 @@ function AddProducts() {
 
             if (data.success) {
 
-                alert("Product Added Successfully");
+                alert("✅ Product Added Successfully");
 
                 // Reset form - all fields will be empty
                 setproductDetails(initialProductState);

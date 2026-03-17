@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { createContext, useEffect, useState } from 'react'
+import Cookies from "js-cookie";
 
 export const ShopContext = createContext(null);
+
 
 const getdefaultCart = () => {
     let cart = {};
@@ -31,10 +33,28 @@ const ShopContextProvider = (props) => {
         getProducts();
     }, []);
 
-    const addToCart = (itemId) => {
+    const addToCart = async (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }))
 
-    }
+        const token = Cookies.get("token");
+        console.log("The token is "+token)
+        // console.log(itemId)
+        try {
+            const response = await axios.post(
+                "http://localhost:4000/api/product/addcart",
+                {"itemId" : itemId },   // request body
+                {
+                    withCredentials: true 
+                }
+            );
+
+            console.log("Success:", response.data);
+        } catch (error) {
+            console.error("Error while adding to cart:", error.response?.data || error.message);
+        }
+    };
+
+
     const removeFromCart = (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
     }
