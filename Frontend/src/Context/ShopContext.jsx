@@ -28,23 +28,78 @@ const ShopContextProvider = (props) => {
             } catch (error) {
                 console.log(error);
             }
+
+            if (Cookies.get("token")) {
+                console.log("The token is " + Cookies.get("token"))
+
+                try {
+
+                    fetch('http://localhost:4000/api/product/getcart',{
+                       method:"POST",
+                       headers:{
+                           Accept:'application/form-data',
+                           'Content-Type':'application/json',
+                       },
+                       body:"",
+                    }).then((response)=>response.json())
+                    .then((data)=>{
+                        setCartItems(data)
+                    })
+
+
+                    const response = await axios.post(
+                        "http://localhost:4000/api/product/getcart",
+                        { "itemId": itemId },   // request body
+                        {
+                            withCredentials: true
+                        }
+                    );
+
+                    console.log("Success:", response.data);
+                } catch (error) {
+                    console.error("Error while adding to cart:", error.response?.data || error.message);
+                }
+            }
         };
 
         getProducts();
     }, []);
 
+
     const addToCart = async (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }))
 
         const token = Cookies.get("token");
-        console.log("The token is "+token)
+        console.log("The token is " + token)
         // console.log(itemId)
         try {
             const response = await axios.post(
                 "http://localhost:4000/api/product/addcart",
-                {"itemId" : itemId },   // request body
+                { "itemId": itemId },   // request body
                 {
-                    withCredentials: true 
+                    withCredentials: true
+                }
+            );
+
+           alert("✅ Product added to cart successfully")
+        } catch (error) {
+            console.error("Error while adding to cart:", error.response?.data || error.message);
+        }
+    };
+
+
+    const removeFromCart = async (itemId) => {
+        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
+
+        const token = Cookies.get("token");
+        console.log("The token is " + token)
+        // console.log(itemId)
+        try {
+            const response = await axios.post(
+                "http://localhost:4000/api/product/removecart",
+                { "itemId": itemId },   // request body
+                {
+                    withCredentials: true
                 }
             );
 
@@ -52,12 +107,9 @@ const ShopContextProvider = (props) => {
         } catch (error) {
             console.error("Error while adding to cart:", error.response?.data || error.message);
         }
-    };
-
-
-    const removeFromCart = (itemId) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
     }
+
+
     const getTotalAmount = () => {
         let totalAmount = 0;
         for (const item in cartItems) {

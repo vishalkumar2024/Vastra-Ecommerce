@@ -48,6 +48,7 @@ const addProducts = async (req, res) => {
     }
 }
 
+
 // Function to remove products from the database
 const removeProduct = async (req, res) => {
     try {
@@ -70,6 +71,7 @@ const removeProduct = async (req, res) => {
 
 }
 
+
 // Function to fetch all the products
 const getAllProducts = async (req, res) => {
     try {
@@ -87,6 +89,7 @@ const getAllProducts = async (req, res) => {
         })
     }
 }
+
 
 // Function to add cart
 const addCart = async (req, res) => {
@@ -111,23 +114,15 @@ const addCart = async (req, res) => {
         user.markModified("cartData");
         await user.save();
 
-        return res.status(200).json({
-            success: true,
-            message: "Added to cart successfully",
-            cart: user.cartData
-        });
 
     } catch (error) {
-        console.log(error);
-        return res.status(500).json({
-            success: false,
-            message: "Server error"
-        });
+       console.log(error,"Error occur while adding item to cart")
+
     }
 };
 
 
-// Function to add cart
+// Function to remove cart
 const removeCart = async (req, res) => {
     try {
         const { itemId } = req.body;
@@ -142,28 +137,41 @@ const removeCart = async (req, res) => {
         }
 
         // Handle item count safely
-        if (user.cartData[itemId]>0) {
+        if (user.cartData[itemId] > 0) {
             user.cartData[itemId] -= 1;
-        }  
+        }
 
         user.markModified("cartData");
         await user.save();
 
-        return res.status(200).json({
-            success: true,
-            message: "Added to cart successfully",
-            cart: user.cartData
-        });
 
     } catch (error) {
         console.log(error);
         return res.status(500).json({
             success: false,
-            message: "Server error"
+            message: "Error occur while removing item from cart"
         });
     }
 };
 
+// Function to get cart data for any user
+const getCart = async (req, res) => {
+    try {
+        const user = await UserModel.findById(req.user._id);
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+        res.json(userData.cartData);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message: "Error occur while fetching cart data"
+        });
+    }
+}
 
-
-export { addProducts, removeProduct, getAllProducts, addCart, removeCart }
+export { addProducts, removeProduct, getAllProducts, addCart, removeCart,getCart }
