@@ -5,7 +5,7 @@ import { isAuth } from '../Middleware/isAuth.middleware.js';
 
 
 router.route('/login').post(login)
-router.post('/logout', isAuth, logout)
+router.post('/logout',  logout)
 router.post('/signup',registerUser);
 
 export default router
