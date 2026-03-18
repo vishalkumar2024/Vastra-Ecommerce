@@ -8,8 +8,4 @@ router.route('/login').post(login)
 router.post('/logout', isAuth, logout)
 router.post('/signup',registerUser);
 
-// router.post('/getCurrentUser', isAuth, getCurrentUser)
-// router.post('/updateAccountDetails', isAuth, updateAccountDetails)
-// router.post('/getUserChannelProfile/:userName', isAuth, getUserChannelProfile)
-
 export default router
