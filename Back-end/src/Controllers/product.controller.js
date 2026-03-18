@@ -164,7 +164,7 @@ const getCart = async (req, res) => {
                 message: "User not found"
             });
         }
-        res.json(userData.cartData);
+        res.json(user.cartData);
     } catch (error) {
         console.log(error);
         return res.status(500).json({

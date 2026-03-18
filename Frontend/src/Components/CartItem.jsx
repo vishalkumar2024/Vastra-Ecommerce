@@ -25,7 +25,7 @@ function CartItem() {
                 {allProducts.map((item) => {
                     if (cartItems[item.id] > 0) {
                         return (
-                            <div>
+                            <div key={item.id} >
                                 <div id='cartItem-second-inner' className='flex mt-5 ml-2 mb-7 '>
 
                                     <div id='cartItem-second-inner-first' className='flex  gap-36 text-[14px] w-[40%]  justify-start items-center max-lg:gap-30 max-md:gap-18 max-sm:gap-14'>
