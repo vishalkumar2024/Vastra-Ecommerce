@@ -3,6 +3,8 @@ import FooterImg  from "../Components/Assets/logoshoping.png"
 import instagramLogo from "../Components/Assets/instagram_icon.png"
 import pinterestLogo from "../Components/Assets/pintester_icon.png"
 import whatsAppLogo from "../Components/Assets/whatsapp_icon.png"
+import { Link } from 'react-router-dom'
+
 
 function Footer() {
 
@@ -16,10 +18,10 @@ function Footer() {
 
             <ul id='footer-ul' className=' footerUl flex gap-11 text-[#252525] text-[20px] max-md:gap-10  max-sm:gap-5 max-sm:text-[18px] '>
                 <li id="footer-li" className='footerLi cursor-pointer hover:bg-blue-300 px-3 py-[6px] rounded  '>Company</li>
-                <li id="footer-li" className='footerLi cursor-pointer hover:bg-blue-300 px-3 py-[6px] rounded  '>Products</li>
+                <Link to='/allproducts' id="footer-li" className='footerLi cursor-pointer hover:bg-blue-300 px-3 py-[6px] rounded  '>Products</Link>
                 <li id="footer-li" className='footerLi cursor-pointer hover:bg-blue-300 px-3 py-[6px] rounded  '>Offices</li>
-                <li id="footer-li" className='footerLi cursor-pointer hover:bg-blue-300 px-3 py-[6px] rounded  '>About</li>
-                <li id="footer-li" className='footerLi cursor-pointer hover:bg-blue-300 px-3 py-[6px] rounded  '>Contact</li>
+                <Link to='/about' id="footer-li" className='footerLi cursor-pointer hover:bg-blue-300 px-3 py-[6px] rounded  '>About</Link>
+                <Link to='/contact' id="footer-li" className='footerLi cursor-pointer hover:bg-blue-300 px-3 py-[6px] rounded  '>Contact</Link>
             </ul>
 
             <div className='flex gap-5 my-3'>
