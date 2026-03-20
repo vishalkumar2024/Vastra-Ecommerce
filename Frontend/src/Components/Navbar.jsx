@@ -224,7 +224,7 @@ function Navbar() {
                                 {" "}
                                 <button
                                     onClick={window.scrollTo(0, 0)}
-                                    className=" bg-green-500 text-white cursor-pointer py-2 max-lg:py-1.5 max-lg:px-3rounded  active:bg-green-700 w-[120px] px-3  max-sm:w-[100%]"
+                                    className=" bg-linear-to-l to-green-400 via-green-500 from-green-400 text-white rounded-sm cursor-pointer py-2 shadow-xl shadow-slate-200   transition-all duration active:scale-95max-lg:py-1.5 max-lg:px- active:bg-green-700 w-[120px] px-3  max-sm:w-[100%]"
                                 >
                                     Login
                                 </button>
