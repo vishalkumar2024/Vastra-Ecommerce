@@ -1,4 +1,4 @@
-import  { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Logo from "../Components/Assets/logoshoping.png";
 import "./Button.css";
 import CartIcon from "../Components/Assets/cart_icon.png";
@@ -209,11 +209,28 @@ function Navbar() {
                             </li>
                         </Link>
 
-                        <Link to="/login" onClick={() => setMenuBar(false)}>
-                            <li className="bg-green-500 text-white cursor-pointer py-2 max-lg:py-1.5 max-lg:px-3rounded  active:bg-green-700 w-[120px] px-3  max-sm:w-[100%] ">
-                                Login
-                            </li>
-                        </Link>
+                        {isLoggedIn ? (
+                            <Link to="/login">
+                                {" "}
+                                <button
+                                    onClick={handleLogout}
+                                    className="bg-green-500 text-white cursor-pointer py-2 max-lg:py-1.5 max-lg:px-3rounded  active:bg-green-700 w-[120px] px-3  max-sm:w-[100%]"
+                                >
+                                    Logout
+                                </button>
+                            </Link>
+                        ) : (
+                            <Link to="/login">
+                                {" "}
+                                <button
+                                    onClick={window.scrollTo(0, 0)}
+                                    className=" bg-green-500 text-white cursor-pointer py-2 max-lg:py-1.5 max-lg:px-3rounded  active:bg-green-700 w-[120px] px-3  max-sm:w-[100%]"
+                                >
+                                    Login
+                                </button>
+                            </Link>
+                        )}
+
                     </ul>
                 </div>
             </div>
