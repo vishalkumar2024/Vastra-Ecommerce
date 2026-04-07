@@ -86,7 +86,7 @@ function AddProducts() {
     };
 
     return (
-        <div className="py-8 px-10 m-7 bg-white w-full">
+        <div className="py-8 px-10 m-7 max-md:m-0 bg-white w-full ">
 
             <div className="w-full mb-8">
                 <p className="text-[18px] mb-3 font-semibold text-gray-500">

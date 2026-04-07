@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+
+@media (max-width:500px) {
+
+    /* Media Query for Navbar below 500px */
+    #logoImage{
+        margin-left: 10px;
+    }
+    #logoImage p{
+        font-size: 20px;
+    }
+    #adminPanel p{
+        font-size: 16px;
+    }
+    #profilePicture {
+        gap: 4px;
+    }
+    #profilePicture #profilePicture-image{
+        height:30px;
+        width: 30px;
+    }
+    #profilePicture #profilePicture-arrow{
+        height: 12px;
+        width: 12px;
+    }
+}

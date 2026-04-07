@@ -7,7 +7,7 @@ import ListProducts from '../components/ListProducts'
 
 function Admin() {
   return (
-    <div className='flex max-md:flex-col'>
+    <div className='flex  max-md:flex-col'>
       <Sidebar />
       <Routes>
         <Route path="/addproduct" element={<AddProducts />} />
