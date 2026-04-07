@@ -86,7 +86,7 @@ function AddProducts() {
     };
 
     return (
-        <div className="py-8 px-10 m-7 max-md:m-0 bg-white w-full ">
+        <div id="addProduct" className="py-8 px-10 m-7 max-md:m-0 bg-white w-full ">
 
             <div className="w-full mb-8">
                 <p className="text-[18px] mb-3 font-semibold text-gray-500">
@@ -137,7 +137,7 @@ function AddProducts() {
 
             </div>
 
-            <div className="w-[20%] mb-8">
+            <div id="productCategory" className="w-[60%] bg-blue-300-200 mb-8 md:w-[30%]">
 
                 <p className="text-[18px] mb-2 font-semibold text-gray-700">
                     Product category
@@ -156,11 +156,12 @@ function AddProducts() {
 
             </div>
 
-            <div className="w-[10%] flex items-baseline justify-center rounded-sm border-2 border-gray-400 cursor-pointer bg-gray-200 mb-5">
+            <div id="objectPicture" className="w-[120px] flex items-baseline justify-center rounded-sm border-2 border-gray-400 cursor-pointer bg-gray-200 mb-5">
 
                 <label htmlFor="file-input">
 
                     <img
+                        id="objectPicture-image"
                         src={image ? URL.createObjectURL(image) : upload}
                         className="h-20 w-24 cursor-pointer"
                         alt="upload"
