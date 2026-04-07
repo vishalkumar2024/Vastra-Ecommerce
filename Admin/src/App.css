@@ -24,4 +24,12 @@
         height: 12px;
         width: 12px;
     }
+
+    /* Media Query for Sidebar below 500px */
+    #addProduct p{
+        font-size: 16px;
+    }
+    #productList p{
+        font-size: 16px;
+    }
 }
